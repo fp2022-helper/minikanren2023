@@ -1,10 +1,8 @@
-[submodule "faster-miniKanren"]
-	path = faster-miniKanren
-	url = https://github.com/michaelballantyne/faster-minikanren.git
-	shallow = true
 [submodule "ocaml/OCanren"]
 	path = ocaml/OCanren
 	url = https://github.com/Kakadu/OCanren.git
-	branch = syntax-hack
-	shallow = true
+	branch = miniKanren2023
 
+[submodule "faster-minikanren"]
+	path = faster-minikanren
+	url = https://github.com/michaelballantyne/faster-minikanren.git
