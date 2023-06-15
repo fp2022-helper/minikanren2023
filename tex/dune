@@ -1,0 +1,11 @@
+(executable
+ (name make_table)
+ (libraries))
+
+(rule
+ (targets bench_table.tex)
+ (mode
+  (promote (until-clean)))
+ (deps ./make_table.exe)
+ (action
+  (run ./make_table.exe)))

@@ -1,0 +1,153 @@
+(library
+ (name counters)
+ (public_name kanren_benchmarks.counters)
+ (modules counters)
+ (wrapped false))
+
+(executables
+ (names reverso appendo conjunction)
+ (modules reverso appendo conjunction)
+ (libraries OCanren counters)
+ (flags
+  (:standard
+   -rectypes
+   ;-dsource
+   ;
+   ))
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_fresh
+   GT.ppx_all
+   OCanren-ppx.ppx_distrib
+   OCanren-ppx.ppx_repr)))
+
+(executables
+ (names perm)
+ (modules perm)
+ (libraries OCanren counters permo_decls)
+ (flags
+  (:standard
+   -rectypes
+   ;-dsource
+   ;
+   ))
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_fresh
+   GT.ppx_all
+   OCanren-ppx.ppx_distrib
+   OCanren-ppx.ppx_repr)))
+
+(library
+ (name numero_decls)
+ (modules numero_decls)
+ (wrapped false)
+ (libraries OCanren OCanren.tester counters)
+ (flags
+  (:standard
+   -rectypes
+   ;-dsource
+   ;
+   ))
+ (preprocessor_deps %{project_root}/ocaml/bench/pp5+dump.exe)
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_fresh
+   GT.ppx_all
+   OCanren-ppx.ppx_distrib
+   OCanren-ppx.ppx_repr
+   ppx_optcomp
+   --
+   -pp
+   "ocaml/bench/pp5+dump.exe -D TRACE")))
+
+(library
+ (name permo_decls)
+ (modules permo_decls)
+ (wrapped false)
+ (libraries OCanren OCanren.tester counters)
+ (flags
+  (:standard
+   -rectypes
+   ;-dsource
+   ;
+   ))
+ (preprocessor_deps %{project_root}/ocaml/bench/pp5+dump.exe)
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_fresh
+   GT.ppx_all
+   OCanren-ppx.ppx_distrib
+   OCanren-ppx.ppx_repr
+   ppx_optcomp
+   --
+   -pp
+   "ocaml/bench/pp5+dump.exe -D TRACE")))
+
+(executable
+ (name numero)
+ (modules numero)
+ (flags
+  (:standard -rectypes))
+ (libraries numero_decls)
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_fresh
+   GT.ppx_all
+   OCanren-ppx.ppx_distrib
+   OCanren-ppx.ppx_repr)))
+
+(library
+ (name scheme_interpret)
+ (modules scheme_interpret)
+ (libraries OCanren counters)
+ (flags
+  (:standard -rectypes))
+ (preprocessor_deps %{project_root}/ocaml/bench/pp5+dump.exe)
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_fresh
+   GT.ppx_all
+   OCanren-ppx.ppx_distrib
+   OCanren-ppx.ppx_repr
+   ppx_optcomp
+   --
+   -pp
+   "ocaml/bench/pp5+dump.exe -D TRACE")))
+
+(executables
+ (names quines twines thrines evalo)
+ (modules quines twines thrines evalo)
+ (libraries OCanren scheme_interpret)
+ (flags
+  (:standard -rectypes))
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_fresh
+   GT.ppx_all
+   OCanren-ppx.ppx_distrib
+   OCanren-ppx.ppx_repr)))
+
+(cram
+ (deps
+  conjunction.exe
+  appendo.exe
+  reverso.exe
+  rewriter.exe
+  quines.exe
+  twines.exe
+  thrines.exe
+  numero.exe
+  ;
+  ))
+
+(executable
+ (name rewriter)
+ (modules rewriter)
+ (flags
+  (:standard -linkall))
+ (libraries
+  OCanren-ppx.ppx_fresh
+  GT.ppx_all
+  OCanren-ppx.ppx_distrib
+  ppxlib.runner))

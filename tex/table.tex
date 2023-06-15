@@ -1,0 +1,76 @@
+% !TEX TS-program = xelatex
+% !TeX spellcheck = ru_RU
+
+\documentclass{article}
+
+\usepackage{hyperref}
+\usepackage{polyglossia}
+\setmainlanguage{russian}
+\setotherlanguage{english}
+\usepackage{csquotes}
+\usepackage{multirow}
+\pagenumbering{gobble} 
+\usepackage[a5paper]{geometry}
+\geometry
+  {top=18pt
+  , bottom=14pt
+  ,left=.5cm,right=1cm
+%  ,paperwidth=5.5in
+%  ,paperheight=8.5in,
+  }
+
+\setmainfont[
+ Ligatures=TeX,
+ Extension=.otf,
+ BoldFont=cmunbx,
+ ItalicFont=cmunti,
+ BoldItalicFont=cmunbi,
+]{cmunrm}
+% С засечками (для заголовков)
+\setsansfont[
+ Ligatures=TeX,
+ Extension=.otf,
+ BoldFont=cmunsx,
+ ItalicFont=cmunsi,
+]{cmunss}
+\setmonofont[Scale=1.0,
+    BoldFont=lmmonolt10-bold.otf,
+    ItalicFont=lmmono10-italic.otf,
+    BoldItalicFont=lmmonoproplt10-boldoblique.otf
+]{lmmono9-regular.otf}
+
+%\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\usepackage{graphicx}
+
+\title{Отзыв научного руководителя о прохождении
+  учебной практики \\
+   ``Интеграция Qt/QML c OCaml: вызов обработчиков''}
+
+\date{\today}
+%\author{Косарев Дмитрий}
+\def\Jsoo{\textsc{Js\_of\_ocaml}}
+\def\Javascript{\textsc{Javascript}}
+\def\OCaml{\textsc{OCaml}}
+
+\begin{document}
+\maketitle
+
+\begin{tabular}{l*{6}{|c} r}
+Team              & \multicolumn{3}{ |c| }{Kotlin}  & \multicolumn{3}{ |c| }{Racket}   & Pts \\
+\hline
+ 
+        & u & ms & ms/1ku  & u & ms & ms/1ku & ?  \\
+
+$3^5$ 
+        & 823212 & 4 &   & 342799 & 10 & 5 & 12  \\
+$logo_3 243$           
+        & 74042 & 2 &   & 44410 &  7 & 8 &  7  \\
+$127\cdot127$            
+        & 220986 & 3 &   & 133947 &  8 & 9 &  9  \\
+$7^2$    
+        & 6 & 2 &   & 299688  &   & 8 &  7  \\
+\end{tabular}
+  
+\vspace{3em}
+\input{bench_table}
+\end{document}

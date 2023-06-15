@@ -1,0 +1,30 @@
+(cram
+ (deps ../ocaml_ext2/hack_numero.exe ../ocaml/numero.exe))
+
+(cram
+ (deps
+  ../klogic/klogic.jar
+  ;
+  ))
+
+(cram
+ (deps
+  %{project_root}/racket/appendo.rkt
+  %{project_root}/racket/reverso.rkt
+  %{project_root}/racket/reverso2.rkt
+  %{project_root}/racket/reverso3.rkt
+  %{project_root}/racket/reverso4.rkt
+  %{project_root}/racket/mulo1.rkt
+  %{project_root}/racket/expo5.rkt
+  %{project_root}/racket/debug_stuff.rkt
+  %{project_root}/racket/numbers.rkt
+  %{project_root}/racket/mk.rkt
+  ;
+  ))
+
+(cram
+ (deps
+  %{project_root}/faster-miniKanren/private-unstable.rkt
+  %{project_root}/faster-miniKanren/mk.scm
+  ;
+  ))

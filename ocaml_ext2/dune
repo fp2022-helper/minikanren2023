@@ -1,0 +1,49 @@
+(executables
+ (names hack_appendo)
+ (modules hack_appendo)
+ (libraries OCanren counters)
+ (flags
+  (:standard
+   -rectypes
+   ;-dsource
+   ;
+   ))
+ (preprocess
+  (pps ppx_hack OCanren-ppx.ppx_repr)))
+
+(executables
+ (names hack_numero)
+ (modules hack_numero)
+ (libraries numero_decls_hack counters)
+ (flags
+  (:standard
+   -rectypes
+   ;-dsource
+   ;
+   ))
+ (preprocess
+  (pps ppx_hack OCanren-ppx.ppx_repr)))
+
+(library
+ (name numero_decls_hack)
+ (modules numero_decls_hack)
+ (wrapped false)
+ (libraries OCanren OCanren.tester counters)
+ (flags
+  (:standard
+   -rectypes
+   ;-dsource
+   ;
+   ))
+ (preprocessor_deps %{project_root}/ocaml/bench/pp5+dump.exe)
+ (preprocess
+  (pps
+   ppx_hack
+   ; OCanren-ppx.ppx_fresh
+   GT.ppx_all
+   OCanren-ppx.ppx_distrib
+   OCanren-ppx.ppx_repr
+   ppx_optcomp
+   --
+   -pp
+   "ocaml/bench/pp5+dump.exe -D TRACE")))

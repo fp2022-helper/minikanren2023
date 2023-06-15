@@ -1,0 +1,52 @@
+(library
+ (name numero_decls_ext2_nolog)
+ (modules numero_decls_ext2_nolog)
+ (libraries OCanren OCanren.tester counters)
+ (wrapped false)
+ (flags
+  (:standard -rectypes))
+ (preprocessor_deps %{project_root}/ocaml/bench/pp5+dump.exe)
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_fresh
+   GT.ppx_all
+   OCanren-ppx.ppx_distrib
+   ppx_optcomp
+   --
+   -pp
+   ocaml/bench/pp5+dump.exe)))
+
+(library
+ (name permo_ext2_nolog)
+ (modules permo_decls_ext2_nolog)
+ (libraries OCanren counters)
+ (wrapped false)
+ (flags
+  (:standard -rectypes))
+ (preprocessor_deps %{project_root}/ocaml/bench/pp5+dump.exe)
+ (preprocess
+  (pps
+   OCanren-ppx.ppx_fresh
+   GT.ppx_all
+   OCanren-ppx.ppx_distrib
+   ;ppx_optcomp
+   --
+   -pp
+   ocaml/bench/pp5+dump.exe)))
+
+(executables
+ (names numero_bench_ext2)
+ (modules numero_bench_ext2)
+ (flags
+  (:standard -rectypes -open Numero_decls_ext2_nolog))
+ (libraries benchmark numero_decls_ext2_nolog))
+
+(executables
+ (names permo_bench_ext2)
+ (modules permo_bench_ext2)
+ (flags
+  (:standard -rectypes -open Permo_decls_nolog))
+ (libraries benchmark permo_nolog))
+
+(cram
+ (deps ./numbero_bench_hack.exe))

@@ -1,0 +1,4 @@
+; It would be great to specify cram dependecies here, but...
+;(alias
+; (name trace-tests)
+; (deps @appendo1.kotlin @appendo2.kotlin @reverso.kotlin))

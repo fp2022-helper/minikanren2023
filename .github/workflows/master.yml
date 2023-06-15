@@ -1,0 +1,39 @@
+name: Build master
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    env:
+      OPAMROOT: /home/user/.opam
+
+    runs-on: ubuntu-latest
+    container:
+      image: kakadu18/ocaml:pltlab
+      options: --user user
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          access_token: ${{ github.token }}
+
+      - run: opam update
+      - run: opam --version
+      - run: opam exec -- ocamlopt --version
+
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - run: |
+          sudo apt update
+          sudo apt install racket openjdk-18-jdk -y --no-install-recommends
+      - run: opam install OCanren OCanren-ppx --yes --deps-only --with-test #--with-doc
+
+      - run: opam exec -- dune test # dune runtest

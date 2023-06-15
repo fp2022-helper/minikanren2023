@@ -1,0 +1,12 @@
+(cram
+ (deps
+  %{project_root}/ocaml/appendo.exe
+  %{project_root}/ocaml/reverso.exe
+  %{project_root}/ocaml/numero.exe
+  ; %{project_root}/ocaml/quines.exe
+  ; %{project_root}/ocaml/twines.exe
+  ; %{project_root}/ocaml/thrines.exe
+  %{project_root}/ocaml/conjunction.exe
+  %{project_root}/ocaml/perm.exe
+  ;
+  ))

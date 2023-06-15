@@ -1,0 +1,1 @@
+To run tests, use `java -jar ./klogic.jar [testName]`, where `testName` is one of the `[appendo1, apppendo2, reverso]`
