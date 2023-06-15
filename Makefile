@@ -27,8 +27,7 @@ test_caml:
 		#@twines.ml \
 		#@thrines.ml \
 
-test: #test_caml test_kotlin #test_racket
-	dune test unif_count unif_traces
+test: test_caml test_kotlin #test_racket
 
 clean:
 	dune clean

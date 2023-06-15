@@ -25,9 +25,9 @@ let _ =
       in
       printfn {|\begin{tabular}{l*{6}{ |c }}|};
       printfn
-        {|\multirow{2}{*}{Team} & \multicolumn{3}{ |c| }{Kotlin}  & \multicolumn{3}{ |c| }{Racket}  \\|};
+        {|\multirow{2}{*}{} & \multicolumn{3}{ |c| }{Kotlin}  & \multicolumn{3}{ |c| }{Racket}  \\|};
       printfn {|\cline{2-7}|};
-      printfn {| & u & ms & ms/ku  & u & ms & ms/ku   \\|};
+      printfn {| & unifications & ms & U/ms  & unifications & ms & U/ms   \\|};
       printfn {|\hline|};
       data
       |> List.iter (fun (name, { racket; kotlin }) ->
